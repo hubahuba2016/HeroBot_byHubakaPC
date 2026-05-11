@@ -1,32 +1,65 @@
-# HeroBot by Hubaka
+# HeroBot (PC Compatibility Version)
 
-HeroBot is a Java-based chatbot / AI assistant project built for fun, learning, and experimentation. It integrates with local LLM models using **Ollama** (specifically the **Phi** model) to provide AI-powered responses.
+A simple AI chatbot project focused on learning, experimentation, and future expansion.
 
----
+## Features
 
-## 🧠 About
+* Java-based chatbot
+* SQLite database support
+* Local training data support
+* Internet fallback using `HttpURLConnection`
+* Works on PC/Desktop environments
+* Built for future Android compatibility
+* Expandable architecture for NLP and machine learning experiments
 
-This project is a personal AI chatbot written in Java.  
-It currently includes:
+## Current Status
 
-- Core bot logic (`Herobot` folder / classes)
-- Single-file AI code example
-- Integration with Ollama (Phi model)
-- Project settings and configs
+This repository is currently focused on **PC compatibility** and desktop testing.
 
-HeroBot sends prompts to a locally running Ollama instance and receives AI-generated responses.
+Planned future upgrades include:
 
----
+* Android version
+* Better NLP responses
+* Self-learning improvements
+* Interactive UI/menu system
+* Expanded database and training support
 
-## 🚀 Getting Started
+## Technologies Used
 
-### 📥 Requirements
+* Java
+* SQLite
+* JDBC
+* HttpURLConnection
 
-Before running the bot, make sure you have:
+## Running the Project
 
-- **Java JDK 17** (or later)
-- **Ollama installed**
-- **Phi model downloaded in Ollama**
-- A terminal/console environment
+### Linux / macOS
 
----
+```bash
+chmod +x RunMe.sh
+./RunMe.sh
+```
+
+
+## Goals
+
+HeroBot is part of a long-term experimental project focused on:
+
+* AI chatbot systems
+* NLP experimentation
+* Lightweight local AI
+* Cross-platform compatibility
+* Game and assistant integration
+
+## Notes
+
+This is an experimental project and may change frequently.
+
+## Author
+
+Made by HubakaGs
+
+Ko-fi : https://ko-fi.com/kubohiki
+
+## License
+GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
