@@ -1,11 +1,29 @@
-import java.io.*;
-import java.sql.*;
-import java.util.*;
-import java.util.stream.*;
-import org.apache.commons.math3.linear.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+import org.apache.commons.math3.linear.ArrayRealVector;
+import org.apache.commons.math3.linear.RealVector;
 import org.json.JSONObject;
 
 
@@ -61,7 +79,7 @@ public class Chatbot {
     return;
         }
 
-        BufferedReader reader = new BufferedReader(new FileReader(file));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
         String line;
         String question = null, answer = null;
         PreparedStatement ps = conn.prepareStatement("INSERT OR REPLACE INTO chatbot (question, answer) VALUES (?, ?)");
@@ -212,7 +230,7 @@ public class Chatbot {
 
             // ✅ Send request
             try (OutputStream os = conn.getOutputStream()) {
-                os.write(jsonInput.getBytes());
+                os.write(jsonInput.getBytes(StandardCharsets.UTF_8));
             }
 
             // ✅ Read response (safe handling)
@@ -224,7 +242,7 @@ public class Chatbot {
             }
 
             BufferedReader in = new BufferedReader(
-                    new InputStreamReader(responseStream)
+                    new InputStreamReader(responseStream, StandardCharsets.UTF_8)
             );
 
             StringBuilder response = new StringBuilder();
@@ -250,4 +268,3 @@ public class Chatbot {
 
 
 }
-
