@@ -1,65 +1,62 @@
-# HeroBot (PC Compatibility Version)
+# 🤖 Herobot
 
-A simple AI chatbot project focused on learning, experimentation, and future expansion.
+Herobot is a cross-platform Java-based chatbot that combines traditional keyword matching (using Cosine Similarity) with local LLM capabilities via Ollama. It uses SQLite for persistent storage of training data.
 
-## Features
+## ✨ Features
+- **Hybrid Intelligence**: Uses vector-based similarity for fast local responses and falls back to a local LLM for complex queries.
+- **Cross-Platform**: Compatible with both Windows and Linux using provided Gradle wrappers.
+- **Training Mode**: Easily teach the bot new responses directly from the terminal.
+- **SQLite Integration**: Automatically saves and loads question-answer pairs.
+- **UTF-8 Support**: Properly handles special characters (e.g., Islamic symbols like ﷺ).
 
-* Java-based chatbot
-* SQLite database support
-* Local training data support
-* Internet fallback using `HttpURLConnection`
-* Works on PC/Desktop environments
-* Built for future Android compatibility
-* Expandable architecture for NLP and machine learning experiments
+## 📋 Prerequisites
+1. **Java JDK 17 or higher** installed.
+2. **Ollama** (Optional, for LLM support):
+   - Install Ollama from [ollama.com](https://ollama.com).
+   - Run the Phi model: `ollama run phi`.
 
-## Current Status
+## 🚀 Installation & Setup
 
-This repository is currently focused on **PC compatibility** and desktop testing.
+1. **Clone the repository**:
+   ```bash
+   git clone <your-repo-url>
+   cd Herobot
+   ```
 
-Planned future upgrades include:
+2. **Prepare the database**:
+   The bot will automatically create `chatbot.db` and import `chatbot_training_data.txt` on the first run.
 
-* Android version
-* Better NLP responses
-* Self-learning improvements
-* Interactive UI/menu system
-* Expanded database and training support
+## 💻 How to Run
 
-## Technologies Used
-
-* Java
-* SQLite
-* JDBC
-* HttpURLConnection
-
-## Running the Project
-
-### Linux / macOS
-
-```bash
-chmod +x RunMe.sh
-./RunMe.sh
+### On Windows
+Open Command Prompt or PowerShell in the project folder and run:
+```cmd
+gradlew.bat run
 ```
 
+### On Linux / macOS
+Open a terminal in the project folder and run:
+```bash
+chmod +x gradlew
+./gradlew run
+```
 
-## Goals
+## 🛠️ Usage
+Once the bot is running, you can:
+- **Chat**: Simply type your question and press Enter.
+- **Train**: Type `train` to enter training mode and add a new custom response.
+- **Exit**: Type `exit` to close the application.
 
-HeroBot is part of a long-term experimental project focused on:
+## 🧠 Technical Details
+- **Similarity Logic**: The bot converts text into vectors and uses **Cosine Similarity** to find the closest match in the database.
+- **Fallback**: If the similarity score is below `0.55`, the query is sent to a local Ollama instance (running the `phi` model) at `http://localhost:11434`.
+- **Dependencies**:
+  - `org.xerial:sqlite-jdbc`
+  - `org.apache.commons:commons-math3`
+  - `org.json:json`
 
-* AI chatbot systems
-* NLP experimentation
-* Lightweight local AI
-* Cross-platform compatibility
-* Game and assistant integration
+## 📝 License
+Copyright © 2024 HubakaPC. Licensed under the Apache License, Version 2.0.
 
-## Notes
-
-This is an experimental project and may change frequently.
-
-## Author
-
-Made by HubakaGs
-
-Ko-fi : https://ko-fi.com/kubohiki
-
-## License
-GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
+---
+*Created with ❤️ by HubakaPC*
