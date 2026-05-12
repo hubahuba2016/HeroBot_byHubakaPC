@@ -56,7 +56,11 @@ Once the bot is running, you can:
   - `org.json:json`
 
 ## 📝 License
-Copyright © 2024 HubakaPC. Licensed under the Apache License, Version 2.0.
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
 
+ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
 ---
 *Created with ❤️ by HubakaPC*
