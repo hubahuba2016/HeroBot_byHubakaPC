@@ -13,7 +13,8 @@ Herobot is a cross-platform Java-based chatbot that combines traditional keyword
 1. **Java JDK 17 or higher** installed.
 2. **Ollama** (Optional, for LLM support):
    - Install Ollama from [ollama.com](https://ollama.com).
-   - Run the Phi model: `ollama run phi`.
+   - Run the default lightweight model: `ollama run llama3.2:1b`.
+   - To use Phi on a machine with enough memory, set `HEROBOT_MODEL=phi` before running.
 
 ## 🚀 Installation & Setup
 
@@ -24,7 +25,7 @@ Herobot is a cross-platform Java-based chatbot that combines traditional keyword
    ```
 
 2. **Prepare the database**:
-   The bot will automatically create `chatbot.db` and import `chatbot_training_data.txt` on the first run.
+   The bot automatically creates `chatbot.db` and imports the bundled training data on startup. The seed includes more than 100 everyday chitchat responses, and importing is repeatable.
 
 ## 💻 How to Run
 
@@ -45,11 +46,13 @@ chmod +x gradlew
 Once the bot is running, you can:
 - **Chat**: Simply type your question and press Enter.
 - **Train**: Type `train` to enter training mode and add a new custom response.
+- **Help**: Type `help` to show the available commands.
 - **Exit**: Type `exit` to close the application.
 
 ## 🧠 Technical Details
 - **Similarity Logic**: The bot converts text into vectors and uses **Cosine Similarity** to find the closest match in the database.
-- **Fallback**: If the similarity score is below `0.55`, the query is sent to a local Ollama instance (running the `phi` model) at `http://localhost:11434`.
+- **Matching**: Exact normalized questions are checked first, followed by cosine similarity with a `0.55` threshold.
+- **Fallback**: If the similarity score is below `0.55`, the query is sent to a local Ollama instance (running the `phi` model) at `http://localhost:11434`. If Ollama is unavailable, HeroBot returns a friendly local response.
 - **Dependencies**:
   - `org.xerial:sqlite-jdbc`
   - `org.apache.commons:commons-math3`

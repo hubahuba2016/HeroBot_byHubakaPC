@@ -1,11 +1,11 @@
 #!/bin/bash
 
+set -e
+cd "$(dirname "$0")"
+
 echo "Building project..."
+./gradlew --stop >/dev/null 2>&1 || true
 ./gradlew clean build
 
-if [ $? -eq 0 ]; then
-    echo "Running application..."
-    ./gradlew run --console=plain
-else
-    echo "Build failed. Fix errors first."
-fi
+echo "Running application..."
+./gradlew run --console=plain
