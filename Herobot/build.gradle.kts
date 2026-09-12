@@ -3,6 +3,16 @@ plugins {
     id("application") // Allows you to run the app directly via Gradle
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.release.set(17)
+}
+
 group = "com.herobot"
 version = "1.0"
 
